@@ -38,7 +38,16 @@ floorDownBtn.addEventListener("click", () => {
     renderFloors();
 });
 
+floorUpBtn.addEventListener("click", () => {
+    currentFloor = Math.min(MAX_FLOOR, currentFloor + 1);
+    floorSelect.value = currentFloor;
+    renderFloors();
+});
 
+floorSelect.addEventListener("change", ()=>{
+    currentFloor = Number(floorSelect.value);
+        render();
+});
 
 // --- functions ---
 function createMarker(room) {
