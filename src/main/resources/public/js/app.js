@@ -15,6 +15,8 @@ let currentFloor = Number(floorSelect.value);
 
 let rooms = [];
 
+let testListe = renderMarkers;
+
 // --- Rendering ---
 function render() {
     renderFloors();
@@ -28,7 +30,16 @@ function renderFloors() {
     });
 }
 
-function renderMarkers() { }
+function renderMarkers() {
+    markersEl.innerHTML = ""; // ryd gamle markers først
+
+    rooms
+        .filter(room => Number(room.floor) === currentFloor)
+        .forEach(room => {
+            const marker = createMarker(room);
+            markersEl.appendChild(marker);
+        });
+}
 
 
 // --- Events ---
